@@ -1,0 +1,33 @@
+{
+    "mysql": {
+        "dev": {
+            "host": "liuyu.info",
+            "port": 3306,
+            "user": "liuy",
+            "password": "a123456",
+            "database": "work_model",
+            "maxConnections": 55,
+            "minFreeConnections": 11
+        },
+        "test": {
+            "host": "liuyu.info",
+            "port": 3306,
+            "user": "liuy",
+            "password": "a123456",
+            "database": "work_model",
+            "maxConnections": 55,
+            "minFreeConnections": 11
+        },
+        "online": {
+            "host": "liuyu.info",
+            "port": 3306,
+            "user": "liuy",
+            "password": "a123456",
+            "database": "work_model",
+            "maxConnections": 55,
+            "minFreeConnections": 11
+        }
+    },
+    "redis": {},
+    "mongo": {}
+}
