@@ -5,6 +5,7 @@ from server.operation.register import Register
 ns = api.namespace('register', description="用户注册")
 
 class Register(Resource):
+    
     """用户注册模块
 
 
