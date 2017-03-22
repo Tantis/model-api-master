@@ -225,7 +225,9 @@ class Connection(object):
         cursor = None
         try:
             cursor = self.execute(sql, args)
-            return cursor.fetchone()
+            if cursor.rowcount == 1:
+                return cursor.fetchone()
+            return None
         except:
             raise
         finally:
