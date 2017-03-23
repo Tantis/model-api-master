@@ -36,14 +36,35 @@ class ModelList(Resource):
             return {"status": 404, "msg": '没有数据'}
         # filters 状态 0=空闲 1=接单 2=停止接单 3=休息
         keys = {0: "空闲", 1: "接单", 2: "停止接单", 3: "休息"}
-
+        # 时间类型 1=小时 2=工作日 3=休息日 4=工作月份 5=休息月份 5=季度
+        princeType = {1: "小时", 2:"工作日", 3:"休息日", 4:"工作月份", 5:"休息月份", 5:"季度"}
         for k, v in enumerate(result):
             # 每个用户只要查出一部视频信息
 
-            videoSql = "SELECT * FROM `user_video` WHERE is_hide=0 AND is_deleted=0 AND user_id=:user_id ORDER BY create_time DESC limit 0, 1"
+            videoSql = "SELECT video_url FROM `user_video` WHERE is_hide=0 AND is_deleted=0 AND is_auth=1 AND user_id=:user_id ORDER BY create_time DESC limit 0, 1"
             video = db.query_one(videoSql, {"user_id": v["user_id"]})
+            if not video:
+                video = {"video_url": ""}
+
             v["video"] = video
 
+            # 查询当前用户的类型
+            categorySql = "SELECT `name` FROM `category_directions_items` WHERE id=%s" % v["dictionary_type"]
+            category = db.query_one(categorySql)
+            if not category:
+                category = "平面模特"
+            else:
+                category = category["name"]
+            v["category_name"] = category
+
+            # 查询当前用户的价格
+            priceSql = "SELECT price, time_length, time_type FROM `user_price` WHERE user_id=:user_id"
+            price = db.query_one(priceSql,  {"user_id": v["user_id"]})
+            if not price:
+                price = {"price": "面谈", "time_length": "", "time_type": ""}
+            else:
+                price = {"price": "%0.2f" % price["price"], "time_length": price["time_length"], "time_type": princeType[price["time_type"]]}
+            v["price"] = price
             # 判断当前用户的状态
             status = v["operation_state"]
             v["status"] = keys[status]
