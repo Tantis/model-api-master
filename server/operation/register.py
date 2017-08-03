@@ -4,8 +4,7 @@ from ..utils import wapper
 
 class Register(object):
 
-    @staticmethod
-    @wapper
-    def post(ok, response):
+    @classmethod
+    def user(cls, response):
         return response
 

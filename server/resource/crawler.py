@@ -3,11 +3,24 @@ from .. import api
 from server.operation.register import Register
 from server.modules.utils import Request as Crawler
 from flask import request
+
+import server.document as document
 ns = api.namespace('crawler', description="数据抓取")
 
+response_content = {
+    "overload": {"1": 2, "z": "z", "x": 1.2},
+    "x": "x",
+    "zz": [{"1": 2, "z": "z", "x": 1.2}]
+}
 
+@document.DocumentFormart.registerclass
 class Crawlers(Resource):
+    
+    # 判断版本号
+    __version__ = "1.0.0"
 
+    @document.DocumentFormart.response_code(data={"status": 200, "msg": "失败"})
+    # @document.DocumentFormart.ResponseBody(data=response_content, model_name="Crawler_get")
     def get(self):
         try:
             url = request.args.get('url')

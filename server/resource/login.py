@@ -7,6 +7,7 @@ import time
 import requests
 import uuid
 
+import server.event as event
 
 
 
@@ -16,8 +17,8 @@ class WXLogin(Resource):
 
 
     """
-
-    def get(self):
+    @event.Event.execute(name="user")
+    def get():
         "获取用户OPEN_ID"
         tokens = request.args.get("token")
         if not tokens:
@@ -29,7 +30,7 @@ class WXLogin(Resource):
         if not result:
             return {"status": 401, "msg": 'token已过期'}
         return {"status": 200, "msg": "成功", "data": result["user_id"]}
-
+    
     def post(self):
         "通过WX登录后调用"
 

@@ -10,7 +10,16 @@ class User(Resource):
 
     def post(self):
         "修改用户信息"
-        return {}
-
+        
+        payload = request.json
+        
+        introduction = payload["introduction"]
+        dictionary_type = payload["dictionary_type"]
+        image = payload["image"]
+        if not isinstance(image, list):
+            image = list(image)
+        if not isinstance(image, list):
+            return {"status": 400, "msg": "图片传递错误"}
+        
 
 ns.add_resource(User, '/')

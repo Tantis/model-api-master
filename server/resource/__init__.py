@@ -7,11 +7,12 @@
 """资源模块
 
 
+
 """
 
-from .login import *
-from .register import *
-from .user import *
-from .replace import *
 from .crawler import *
+from .location import *
+from .login import *
 from .models import *
+from .register import *
+from .replace import *

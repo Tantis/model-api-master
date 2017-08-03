@@ -5,7 +5,7 @@
             "port": 3306,
             "user": "liuy",
             "password": "a123456",
-            "database": "work_model",
+            "database": "company",
             "maxConnections": 55,
             "minFreeConnections": 11
         },
@@ -14,7 +14,7 @@
             "port": 3306,
             "user": "liuy",
             "password": "a123456",
-            "database": "work_model",
+            "database": "company",
             "maxConnections": 55,
             "minFreeConnections": 11
         },
@@ -23,11 +23,21 @@
             "port": 3306,
             "user": "liuy",
             "password": "a123456",
-            "database": "work_model",
+            "database": "company",
             "maxConnections": 55,
             "minFreeConnections": 11
         }
     },
-    "redis": {},
-    "mongo": {}
+    "redis": {
+        "token": {
+            "host": "liuyu.info",
+            "port": 6225
+        }
+    },
+    "mongo": {
+        "logger": {
+            "host": "liuyu.info",
+            "port": 27017
+        }
+    }
 }

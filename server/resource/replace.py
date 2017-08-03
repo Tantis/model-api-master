@@ -1,10 +1,14 @@
-from flask_restplus import Resource, Api
-from .. import api
-from server.operation.register import Register
-from server import db
-from flask import request
-
 import time
+
+from flask import request
+from flask_restplus import Api, Resource
+
+from server import db
+from server.operation.register import Register
+
+from .. import api
+
+import server.document as document
 
 ns = api.namespace('opeartion', description="用户留言")
 

@@ -9,11 +9,12 @@ test
 
 """
 import json
-from flask import Flask, Blueprint
-from flask import url_for
+
+from flask import Blueprint, Flask, jsonify, url_for
 from flask_restplus import Api
-from server.modules import model
+
 from server.db import MySQLdb
+from server.modules import model
 
 app = Flask(__name__)
 
@@ -31,7 +32,19 @@ with open('jobs_config.json', 'r', encoding='utf8') as __conf:
 configs = model(conf)
 
 db = MySQLdb(dict(configs.mysql.dev))
+
+
+
+
+
+
 from server import index
 from server import resource
 
 
+
+@api.errorhandler
+def default_error_handler(error):
+    '''Default error handler'''
+    print(error)
+    return {'status': 500, "msg": "服务器内部错误..", "message": ""}
