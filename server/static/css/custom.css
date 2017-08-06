@@ -7,3 +7,7 @@ Created:December 2014
 License URI:http://support.wrapbootstrap.com/
 File Description: Place here your custom CSS styles
 */
+
+.header-first {
+    padding: 18px 0 0 0;
+}
