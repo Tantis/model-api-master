@@ -17,13 +17,17 @@ from server.db import MySQLdb
 from server.modules import model
 
 app = Flask(__name__)
+app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
-blueprint = Blueprint('api', __name__, url_prefix='/api'
-                    )
-api = Api(blueprint, doc='/doc/',version='1.0', title='Sample API',
-                      description='A sample API')
+blueprint = Blueprint('api', __name__, url_prefix='/api')
+api = Api(blueprint, 
+          doc='/doc/',version='1.0', title='Sample API',
+          description='A sample API')
+
+adminPrmary = Blueprint('admin', __name__, url_prefix="/admin")
 
 app.register_blueprint(blueprint)
+
 
 # 读取配置文件
 with open('jobs_config.json', 'r', encoding='utf8') as __conf:
@@ -40,8 +44,10 @@ db = MySQLdb(dict(configs.mysql.dev))
 
 from server import index
 from server import resource
+from server import admin
 
 
+app.register_blueprint(adminPrmary)
 
 @api.errorhandler
 def default_error_handler(error):

@@ -38,7 +38,6 @@ def _parent_resoves():
     level_one = db.query("SELECT * FROM company_menu WHERE is_deleted=0 AND level=1")
     level_two = db.query("SELECT * FROM company_menu WHERE is_deleted=0 AND level=2")
 
-
     level_one_dict = {}
     for item in level_one:
         item["data"] = []

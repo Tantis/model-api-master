@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\server",
+    "\\server\\admin",
+    "\\server\\response",
+    "\\server\\static",
+    "\\server\\templates",
+    "\\server\\templates\\admin"
+  ],
+  "SelectedNode": "\\server\\admin\\home.py",
+  "PreviewInSolutionExplorer": false
+}

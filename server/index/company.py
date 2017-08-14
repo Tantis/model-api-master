@@ -17,8 +17,13 @@ def company_index():
     
 
     # 查询MENU
-    menu_data = _parent_resoves()
-    
-    logo_img  = "http://web.liuyu.info//static/img/1494337395_83468.png"
 
-    return render_template('index.html', menu=menu_data, logo = logo_img)
+    treeResult = db.query("SELECT * FROM category_directions_items WHERE category_direction_id = 2;")
+    if not treeResult:
+        pass
+    logoPng = db.query("SELECT * FROM category_directions_items WHERE category_direction_id = 2;")
+    logoPng = {i["name"]: i["value"] for i in logoPng}
+    
+
+
+    return render_template('index.html', menu=treeResult, logo=logoPng)

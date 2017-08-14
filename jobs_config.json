@@ -5,7 +5,7 @@
             "port": 3306,
             "user": "liuy",
             "password": "a123456",
-            "database": "company",
+            "database": "work_model",
             "maxConnections": 55,
             "minFreeConnections": 11
         },
@@ -14,7 +14,7 @@
             "port": 3306,
             "user": "liuy",
             "password": "a123456",
-            "database": "company",
+            "database": "work_model",
             "maxConnections": 55,
             "minFreeConnections": 11
         },
@@ -23,7 +23,7 @@
             "port": 3306,
             "user": "liuy",
             "password": "a123456",
-            "database": "company",
+            "database": "work_model",
             "maxConnections": 55,
             "minFreeConnections": 11
         }
